@@ -12,8 +12,15 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		6CD78AF90A784E6D9EC6DBC4 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9CAA1B93AFE4D16BB934BDE /* Poppins-Bold.ttf */; };
+		70F72F72A95C4667912FFAC3 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9FD5E4F9BCC4E3B80F0F086 /* Poppins-Light.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-RainbowAppChallenge-RainbowAppChallengeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-RainbowAppChallenge-RainbowAppChallengeTests.a */; };
+		7D6033EA8E0D4C3F9C572608 /* ZenDots-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0D98C9E1BE44AF7B2197C1D /* ZenDots-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9A8077CBA6F749A7B45925D0 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 018BDE16872C484D883F8588 /* Poppins-Regular.ttf */; };
+		C25C0772608647BD8DAA412D /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF2B3F009C7749D985D6E583 /* Poppins-SemiBold.ttf */; };
+		D2A56FB7F77745A19348BB1B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74E2EC12D0154425A2616DC0 /* Poppins-Medium.ttf */; };
+		E7CE428B07EB4697B4A80339 /* Poppins ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA97E7A0BE94987857D98DC /* Poppins ExtraBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +37,7 @@
 		00E356EE1AD99517003FC87E /* RainbowAppChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RainbowAppChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RainbowAppChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RainbowAppChallengeTests.m; sourceTree = "<group>"; };
+		018BDE16872C484D883F8588 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RainbowAppChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainbowAppChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RainbowAppChallenge/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = RainbowAppChallenge/AppDelegate.mm; sourceTree = "<group>"; };
@@ -38,12 +46,18 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RainbowAppChallenge/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-RainbowAppChallenge-RainbowAppChallengeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RainbowAppChallenge-RainbowAppChallengeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-RainbowAppChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainbowAppChallenge.debug.xcconfig"; path = "Target Support Files/Pods-RainbowAppChallenge/Pods-RainbowAppChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		3EA97E7A0BE94987857D98DC /* Poppins ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins ExtraBold.ttf"; path = "../src/assets/fonts/Poppins ExtraBold.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-RainbowAppChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainbowAppChallenge.release.xcconfig"; path = "Target Support Files/Pods-RainbowAppChallenge/Pods-RainbowAppChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-RainbowAppChallenge-RainbowAppChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainbowAppChallenge-RainbowAppChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-RainbowAppChallenge-RainbowAppChallengeTests/Pods-RainbowAppChallenge-RainbowAppChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-RainbowAppChallenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RainbowAppChallenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74E2EC12D0154425A2616DC0 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RainbowAppChallenge/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-RainbowAppChallenge-RainbowAppChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainbowAppChallenge-RainbowAppChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-RainbowAppChallenge-RainbowAppChallengeTests/Pods-RainbowAppChallenge-RainbowAppChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
+		B0D98C9E1BE44AF7B2197C1D /* ZenDots-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "ZenDots-Regular.ttf"; path = "../src/assets/fonts/ZenDots-Regular.ttf"; sourceTree = "<group>"; };
+		E9CAA1B93AFE4D16BB934BDE /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F9FD5E4F9BCC4E3B80F0F086 /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		FF2B3F009C7749D985D6E583 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +120,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		50F4D25AC8144BD3929BD108 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3EA97E7A0BE94987857D98DC /* Poppins ExtraBold.ttf */,
+				E9CAA1B93AFE4D16BB934BDE /* Poppins-Bold.ttf */,
+				F9FD5E4F9BCC4E3B80F0F086 /* Poppins-Light.ttf */,
+				74E2EC12D0154425A2616DC0 /* Poppins-Medium.ttf */,
+				018BDE16872C484D883F8588 /* Poppins-Regular.ttf */,
+				FF2B3F009C7749D985D6E583 /* Poppins-SemiBold.ttf */,
+				B0D98C9E1BE44AF7B2197C1D /* ZenDots-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +151,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				50F4D25AC8144BD3929BD108 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -243,6 +273,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E7CE428B07EB4697B4A80339 /* Poppins ExtraBold.ttf in Resources */,
+				6CD78AF90A784E6D9EC6DBC4 /* Poppins-Bold.ttf in Resources */,
+				70F72F72A95C4667912FFAC3 /* Poppins-Light.ttf in Resources */,
+				D2A56FB7F77745A19348BB1B /* Poppins-Medium.ttf in Resources */,
+				9A8077CBA6F749A7B45925D0 /* Poppins-Regular.ttf in Resources */,
+				C25C0772608647BD8DAA412D /* Poppins-SemiBold.ttf in Resources */,
+				7D6033EA8E0D4C3F9C572608 /* ZenDots-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +503,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RKN8445VT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RainbowAppChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -493,6 +531,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RKN8445VT;
 				INFOPLIST_FILE = RainbowAppChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
