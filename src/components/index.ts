@@ -17,3 +17,4 @@ export * from './profile-avatar';
 export * from './product-card';
 export * from './search';
 export * from './manage-item-quantity';
+export * from './cart-item';
