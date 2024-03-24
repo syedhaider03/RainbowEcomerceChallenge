@@ -1,66 +1,59 @@
+import uploadService from 'services/uploadService';
 import endpoints from './endpoints';
-import httpPrivateService from 'services/httpPrivateService';
+import httpAuthService from 'services/httpAuthService';
+import httpProductService from 'services/httpProductService';
 
-export const doGetAllNews = <T>({
-  q,
-  searchIn,
-  sources,
-  domains,
-  excludeDomains,
-  from,
-  to,
-  language,
-  sortBy,
-  pageSize,
-  page,
-}: RequestOptions.AllNews) => {
-  return httpPrivateService.get<T>(endpoints.getAllNews, {
+/* Asset Upload Powered by ByteScale*/
+
+export const doPostUploadImage = <T>(data: FormData) => {
+  return uploadService.post<T>(endpoints.imageUpload, data);
+};
+
+/* Auth Endpoints Powered by a Mock Server in Beeceptor */
+
+export const doPostSignup = <T>(data: Auth.SignupPayload) => {
+  return httpAuthService.post<T>(endpoints.user, data);
+};
+
+export const doPutUserProfile = <T>(
+  data: Omit<Auth.SignupPayload, 'email'>,
+  user_id: string,
+) => {
+  return httpAuthService.put<T>(`${endpoints.user}/${user_id}`, data);
+};
+
+export const doGetAllUsers = <T>() => {
+  return httpAuthService.get<T>(endpoints.user);
+};
+
+/* Get Products Endpoints powered by Dummy JSON */
+
+export const doGetAllCategories = <T>() => {
+  return httpProductService.get<T>(endpoints.productCategories);
+};
+
+export const doGetFilteredProducts = <T>(category: string) => {
+  return httpProductService.get<T>(
+    `${endpoints.productCategory}/${category}`,
+  );
+};
+
+export const doGetAllProducts = <T>({
+  limit,
+  skip,
+  select,
+}: Pick<Products.QueryParams, 'limit' | 'select' | 'skip'>) => {
+  return httpProductService.get<T>(endpoints.products, {
     params: {
-      q,
-      searchIn,
-      sources,
-      domains,
-      excludeDomains,
-      from,
-      to,
-      language,
-      sortBy,
-      pageSize,
-      page,
+      limit,
+      skip,
+      select,
     },
   });
 };
 
-export const doGetTopHeadlinesSources = <T>({
-  category,
-  language,
-  country,
-}: RequestOptions.TopHeadlinesSources) => {
-  return httpPrivateService.get<T>(endpoints.getTopHeadlineSources, {
-    params: {
-      category,
-      language,
-      country,
-    },
-  });
-};
-
-export const doGetTopHeadlinesNews = <T>({
-  q,
-  sources,
-  pageSize,
-  page,
-  country,
-  category,
-}: RequestOptions.TopHeadlines) => {
-  return httpPrivateService.get<T>(endpoints.getTopHeadline, {
-    params: {
-      q,
-      sources,
-      pageSize,
-      page,
-      country,
-      category,
-    },
+export const doGetSearchedProducts = <T>(params: Products.QueryParams) => {
+  return httpProductService.get<T>(endpoints.productSearch, {
+    params,
   });
 };

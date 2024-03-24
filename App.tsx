@@ -9,6 +9,7 @@ import AppNavigator from 'routes';
 import NativeDevSettings from 'react-native/Libraries/NativeModules/specs/NativeDevSettings';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
+
 const App = () => {
   useEffect(() => {
     // Assign this to a dev-only button or useEffect call
@@ -19,14 +20,14 @@ const App = () => {
   }, []);
   return (
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <PersistGate loading={null} persistor={persistor}>
       <GestureHandlerRootView style={{flex: 1}}>
         <SafeAreaProvider>
           <AppNavigator />
           <Toasts />
         </SafeAreaProvider>
       </GestureHandlerRootView>
-      {/* </PersistGate> */}
+      </PersistGate>
     </Provider>
   );
 };

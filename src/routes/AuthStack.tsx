@@ -3,14 +3,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {palette} from 'theme';
 import {Login, Signup} from 'screens';
 import {AppLogo, Logo} from 'components';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { HiP } from 'helpers';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {HiP} from 'helpers';
 
 const Stack = createNativeStackNavigator<ParamList>();
 export const AuthStack: FC = () => {
   return (
     <SafeAreaView style={{flex: 1, paddingTop: HiP(4)}}>
-      <Logo size={90} animation={'fadeIn'} />
+      <Logo size={100} animation={'fadeIn'} />
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{

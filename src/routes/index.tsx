@@ -5,7 +5,8 @@ import {enableScreens} from 'react-native-screens';
 import {NavigationContainer} from '@react-navigation/native';
 import AppStack from './AppStack'; // Importing the main stack navigator for the app
 import AuthStack from './AuthStack';
-import { palette } from 'theme';
+import {palette} from 'theme';
+import {useAppSelector} from 'hooks';
 
 // Enabling native screens for better performance
 enableScreens(true);
@@ -15,6 +16,7 @@ const Stack = createNativeStackNavigator();
 
 // AppNavigator functional component
 export const AppNavigator: FC = () => {
+  const {user} = useAppSelector(user => user.authSlice);
   return (
     // Wrapping the navigator with NavigationContainer
     <NavigationContainer
@@ -26,22 +28,25 @@ export const AppNavigator: FC = () => {
       }}>
       {/* Defining the stack navigator */}
       <Stack.Navigator
-        initialRouteName="App" 
+        initialRouteName="Auth"
         screenOptions={{
           headerShown: false,
-          animation: 'fade', 
+          animation: 'fade',
         }}>
         {/* Defining the main screen */}
-        <Stack.Screen
-          navigationKey="AuthStack" 
-          name="Auth"
-          component={AuthStack} 
-        />
+        {!user.id ? (
           <Stack.Screen
-          navigationKey="AppStack" 
-          name="App"
-          component={AppStack} 
-        />
+            navigationKey="AuthStack"
+            name="Auth"
+            component={AuthStack}
+          />
+        ) : (
+          <Stack.Screen
+            navigationKey="AppStack"
+            name="App"
+            component={AppStack}
+          />
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -3,11 +3,14 @@ import {FlatList, View} from 'react-native';
 import {Loader, ProductCard} from 'components';
 import {ViewAllHeader} from 'components/view-all-header';
 // import TabPills from 'components/tab-pills';
-import {useAppDispatch, useAppSelector} from 'hooks';
+import {useAppDispatch, useAppSelector, usePagination} from 'hooks';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import styles from './styles';
 import TabPills from 'components/tab-pills';
 import SearchComponent from 'components/search';
+import {PAGINATION_ID} from 'utils/constants';
+import {doGetAllProductsList, doGetCategoriesList} from 'slices/productsSlice';
+import {act} from 'react-test-renderer';
 
 interface Item {}
 
@@ -18,42 +21,76 @@ export const Products: FC<NativeStackScreenProps<ParamList, 'Products'>> = ({
   route,
   navigation,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>('smartphones');
+  const [activeTab, setActiveTab] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const dispatch = useAppDispatch();
-  // const {
+  const {categoriesLoading, categoriesList} = useAppSelector(
+    state => state.productsSlice,
+  );
 
-  // } = useAppSelector(store => store.newsSlice);
+  const {data, initialLoading, paginationProps, resetPageAndReload} =
+    usePagination<Products.Response[]>(
+      ({limit, skip}) =>
+        dispatch(
+          doGetAllProductsList({
+            skip,
+            limit,
+            category: searchQuery
+              ? activeTab == 'all'
+                ? undefined
+                : activeTab
+              : undefined,
+            q: !!searchQuery ? searchQuery : undefined,
+          }),
+        ),
+      <Loader />,
+      [],
+      PAGINATION_ID.ProductsList,
+    );
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(doGetCategoriesList());
+  }, []);
+
+  useEffect(() => {
+    resetPageAndReload();
+  }, [activeTab, searchQuery]);
 
   const handleTabPress = (tab: string) => {
     setActiveTab(tab);
+    setSearchQuery('')
   };
 
-  const renderItem = ({item}: {item: any}) => <ProductCard />;
+  const onSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const renderItem = ({item}: {item: any}) => (
+    <ProductCard {...item} isLoadingComplete={initialLoading} />
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.topViewContainer}>
-        <SearchComponent/>
+        <SearchComponent onSearch={onSearch} />
         <TabPills
-          tabs={categories}
+          tabs={categoriesList}
           activeTab={activeTab}
           onTabPress={handleTabPress}
+          isLoadingComplete={categoriesLoading}
         />
         <ViewAllHeader onPressViewAll={() => {}} title={activeTab} />
-        {false ? (
-          <Loader />
-        ) : (
-          <FlatList
-            data={new Array(10).fill({})}
-            renderItem={renderItem}
-            keyExtractor={item => item.publishedAt}
-            contentContainerStyle={styles.flatListContent}
-            ItemSeparatorComponent={() => <View style={styles.separatorLg} />}
-          />
-        )}
       </View>
+      <FlatList
+        {...paginationProps}
+        data={data}
+        extraData={data}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        contentContainerStyle={styles.flatListContent}
+        ItemSeparatorComponent={() => <View style={styles.separatorLg} />}
+      />
     </View>
   );
 };

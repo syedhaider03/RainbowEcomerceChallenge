@@ -47,7 +47,7 @@ export const Logo: FC<Props> = ({
         {
           transform: [
             {
-              scale: 2,
+              scale: 1.8,
             },
           ],
         },

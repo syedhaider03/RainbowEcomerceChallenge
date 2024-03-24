@@ -50,3 +50,37 @@ export const getCircleRadiusStyle = (radius: number) => {
     borderRadius: radius / 2,
   };
 };
+
+export const wrapForLoader = <T>(list: T[], length?: number): T[] => {
+  if (list?.length) return list;
+  else return new Array(length ?? 5).fill({} as T);
+};
+
+export const getRatingResult = (rating: number): string => {
+  if (rating >= 4.5) {
+    return 'Excellent';
+  } else if (rating >= 3.5) {
+    return 'Good';
+  } else if (rating >= 2.5) {
+    return 'Average';
+  } else if (rating >= 1.5) {
+    return 'Poor';
+  } else if (rating >= 0.5) {
+    return 'Very Poor';
+  } else {
+    return 'Invalid Rating';
+  }
+};
+
+export const getPriceStatus = (price: string | number) => {
+  if (price == 0 || price == '0' || price == '0.00') {
+    return 'Free';
+  } else if (price) {
+    return '£' + floatPad(price);
+  } else return 'FREE';
+};
+
+export function floatPad(num: number | string) {
+  if (typeof num == 'string') num = parseFloat(num);
+  return (Math.round(num * 100) / 100).toFixed(2);
+}

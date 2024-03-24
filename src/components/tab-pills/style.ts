@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3.84,
     elevation: 5,
+    backgroundColor:palette.white,
+    marginBottom:10,
+    marginTop:4,
+    marginLeft:2
   },
   activeTab: {
     backgroundColor: palette.primary,

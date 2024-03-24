@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
+    marginTop:HDP(20)
   },
   loadingText: {
     fontSize: RF(15),

@@ -5,35 +5,31 @@ import {Text, View} from 'react-native';
 import {useAppDispatch, useAppSelector} from 'hooks';
 import {Button, Input, KeyboardAvoidingView, ProfileAvatar} from 'components';
 import styles from './style';
+import {doUpdateUserProfile} from 'slices/authSlice';
 
 export const UpdateProfile: FC<
   NativeStackScreenProps<ParamList, 'Profile'>
 > = ({navigation, route}) => {
   const dispatch = useAppDispatch();
-  const {profileUpdatingInProgress, profileImageUploadLoader} = useAppSelector(
-    state => state.authSlice,
-  );
+  const {profileUpdatingInProgress} = useAppSelector(state => state.authSlice);
 
   const {user} = useAppSelector(State => State.authSlice);
   const [fullName, setFullName] = useState<string>(user.name);
-  const [userImage, setUserImage] = useState<string>(user.profile_image ?? '');
-
-  useEffect(() => {
-    // dispatch(doGetUserDetails());
-  }, []);
+  const [userImage, setUserImage] = useState<string>(user.picture ?? '');
+  const [password, setPassword] = useState<string>('');
 
   const onPressSubmit = () => {
-    // dispatch(
-    //   doUpdateProfile({
-    //     name: fullName,
-    //     profile_photo: userImage,
-    //   }),
-    // )
-    //   .unwrap()
-    //   .then(() => {
-    //     dispatch(doGetUserDetails());
-    //     navigation.goBack();
-    //   });
+    dispatch(
+      doUpdateUserProfile({
+        name: fullName,
+        picture: userImage,
+        password: password ? password : user.password,
+      }),
+    )
+      .unwrap()
+      .then(() => {
+        navigation.goBack();
+      });
   };
 
   return (
@@ -44,9 +40,7 @@ export const UpdateProfile: FC<
           <ProfileAvatar
             initialText={user.name}
             profileImage={userImage}
-            isLoading={profileImageUploadLoader}
             setImage={setUserImage}
-            isFromUpdateProfile
           />
         </View>
         <View style={styles.container}>
@@ -63,21 +57,24 @@ export const UpdateProfile: FC<
             icon="Mail"
             placeholder="Your Email"
             value={user.email}
-            disabled
             isRequired
+            disabled
           />
-
-          <Text style={styles.heading}>
-            Select the categories that best describe you
-            <Text style={{color: 'red'}}> *</Text>
-          </Text>
+          <Input
+            secureTextEntry
+            name="New Password"
+            icon="Lock"
+            placeholder="Your Password"
+            onChangeText={value => setPassword(value)}
+            value={password}
+          />
         </View>
       </KeyboardAvoidingView>
       <View style={styles.buttonWrapper}>
         <Button
           style={styles.cancelButton}
           onPress={() => navigation.goBack()}
-          label={'Cancel'}
+          label={'Logout'}
           labelStyle={styles.btnLabelStyle}
         />
         <Button

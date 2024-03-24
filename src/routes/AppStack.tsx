@@ -69,6 +69,8 @@ const BottomTabNavigator = () => {
               />
             );
           },
+          tabBarBadge: 1,
+          tabBarBadgeStyle: {backgroundColor: 'black'}, // Example style for the badge
         }}
         name="Cart"
         component={CartScreen}

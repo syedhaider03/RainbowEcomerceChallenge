@@ -15,38 +15,22 @@ import {TouchableOpacity} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 type Props = {
-  fullName?: string;
-  email?: string;
   initialText: string;
   profileImage: string;
   isViewOnly?: boolean;
-  isLoading?: boolean;
   isDetailsLoading?: boolean;
-  phone?: string;
-  isFromUpdateProfile?: boolean;
   setImage?: Dispatch<SetStateAction<string>>;
-  hideContactDetails?: boolean;
 };
 export const ProfileAvatar: FC<Props> = ({
-  fullName,
-  email,
   initialText,
   profileImage,
   isViewOnly,
-  isLoading,
-  phone,
   isDetailsLoading,
-  isFromUpdateProfile,
   setImage,
-  hideContactDetails,
 }) => {
   const {uploadProfileImage} = useUploadImageFromDevice();
   const [isPermModalVisible, setPermModalVisible] = useState(false);
-  const {
-    user: {mobile_number},
-  } = useAppSelector(state => state.authSlice);
-  const navigation = useNavigation<NavigationProp<ParamList>>();
-
+  const {profileImageUploadLoader} = useAppSelector(state => state.authSlice);
   return (
     <View style={styles.container}>
       <View style={styles.avatarWrapper}>
@@ -59,11 +43,11 @@ export const ProfileAvatar: FC<Props> = ({
               profileImage={profileImage}
               isViewOnly={isViewOnly}
               initialText={initialText}
-              isLoading={isLoading}
+              isLoading={profileImageUploadLoader}
             />
           </SkeletonLoader>
         </View>
-        {!isViewOnly && !isLoading && (
+        {!isViewOnly && !profileImageUploadLoader && (
           <TouchableOpacity
             onPress={() => {
               uploadProfileImage(() => setPermModalVisible(true), setImage);

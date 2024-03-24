@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
 import {debounce} from 'lodash'; // Import lodash debounce function
 import {Search} from 'assets/svgs';
@@ -17,13 +17,17 @@ const SearchComponent: React.FC<SearchProps> = ({
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   // Debounce the search function by 1 second
-  const debouncedSearch = debounce((query: string) => {
-    onSearch(query);
-  }, 1000);
+  const debouncedSearch = useCallback(
+    debounce(query => {
+      onSearch(query);
+    }, 500),
+    [],
+  );
 
   const handleSearch = (query: string) => {
     setSearchTerm(query);
     debouncedSearch(query);
+    // onSearch(query);
   };
 
   return (
@@ -61,6 +65,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 16,
     color: 'black',
+    marginLeft:8
   },
 });
 

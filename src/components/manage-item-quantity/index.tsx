@@ -8,14 +8,22 @@ import {
   StyleSheet,
   Animated,
   Easing,
+  ViewStyle,
 } from 'react-native';
 import {family, palette} from 'theme';
 
-export const ManageItemQuantity: FC = () => {
+interface Props {
+  style?: any;
+  maxQuantity: number; // New prop for maximum quantity
+}
+
+export const ManageItemQuantity: FC<Props> = ({style, maxQuantity}) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleAdd = () => {
-    setQuantity(quantity + 1);
+    if (quantity < maxQuantity) {
+      setQuantity(quantity + 1);
+    }
   };
 
   const handleRemove = () => {
@@ -25,11 +33,13 @@ export const ManageItemQuantity: FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <TouchableOpacity style={styles.removeButton} onPress={handleRemove}>
         <SvgIcon name="Minus" size={15} />
       </TouchableOpacity>
-      <Text adjustsFontSizeToFit numberOfLines={1} style={styles.quantityText}>{quantity}</Text>
+      <Text adjustsFontSizeToFit numberOfLines={1} style={styles.quantityText}>
+        {quantity}
+      </Text>
       <TouchableOpacity style={styles.addButton} onPress={handleAdd}>
         <SvgIcon name="Add" size={15} />
       </TouchableOpacity>
@@ -93,9 +103,8 @@ const styles = StyleSheet.create({
   quantityText: {
     fontSize: RF(18),
     marginHorizontal: 10,
-    flex:1,
-    fontFamily:family.PoppinsMedium,
-    textAlign:'center',
-    
+    flex: 1,
+    fontFamily: family.PoppinsMedium,
+    textAlign: 'center',
   },
 });

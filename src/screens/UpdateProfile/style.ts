@@ -11,7 +11,7 @@ const styles =  StyleSheet.create({
       flex: 1,
       width: WiP(100),
       alignSelf: 'center',
-      paddingTop: HDP(15),
+      paddingTop: HDP(45),
     },
     imageContainer: {
       marginTop: 20,

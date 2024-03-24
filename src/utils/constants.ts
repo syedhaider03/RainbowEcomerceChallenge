@@ -9,3 +9,8 @@
   export const ERROR_MESSAGES = {
     IMAGE_PERMISSION: 'E_NO_LIBRARY_PERMISSION',
   };
+
+  export const PAGINATION_ID = {
+    ProductsList: 'products',
+  };
+  

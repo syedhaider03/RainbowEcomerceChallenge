@@ -16,9 +16,9 @@ export const ViewAllHeader: React.FC<HeaderProps> = ({
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <TouchableOpacity onPress={onPressViewAll}>
+      {/* <TouchableOpacity onPress={onPressViewAll}>
         <Text style={styles.viewAll}>View All</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };

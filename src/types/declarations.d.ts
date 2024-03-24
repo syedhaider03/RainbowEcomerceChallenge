@@ -9,5 +9,7 @@ declare module '*.svg' {
 // Declaration for environment variables
 declare module '@env' {
   export const API_BASE_URL: string;
-  export const NEWS_API_KEY: string;
+  export const BYTESCALE_UPLOAD_URL: string;
+  export const BYTESCALE_API_KEY: string;
+  export const PRODUCTS_LISTING_URL: string;
 }

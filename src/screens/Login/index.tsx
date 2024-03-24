@@ -22,6 +22,21 @@ export const Login: FC<NativeStackScreenProps<ParamList, 'Login'>> = ({
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const onSubmit = () => {
+    dispatch(
+      doLoginUser({
+        email: email?.trim()?.toLocaleLowerCase(),
+        password,
+      }),
+    )
+      .unwrap()
+      .then(user => {
+        console.log({user})
+        resetAndNavigateToScreen(navigation, 'App');
+      });
+  };
+
   return (
     <View style={styles.container}>
       <Heading text="Sign In" />
@@ -42,35 +57,18 @@ export const Login: FC<NativeStackScreenProps<ParamList, 'Login'>> = ({
             onChangeText={value => setPassword(value)}
             value={password}
           />
-          {/* <TouchableCustomFeedback
-            onPress={() => navigation.navigate('PasswordRecoverStack')}
-            style={styles.forgotBtn}>
-            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-          </TouchableCustomFeedback> */}
         </View>
         <Button
-          onPress={() => {
-            resetAndNavigateToScreen(navigation, 'App')
-            // dispatch(
-            //   doLoginUser({
-            //     email: email?.trim()?.toLocaleLowerCase(),
-            //     password,
-            //   }),
-            // )
-            //   .unwrap()
-            //   .then(user => {
-            //     resetAndNavigateToScreen(navigation, 'App');
-            //   });
-          }}
+          onPress={onSubmit}
           label={'Sign In'}
           loadingText="Signing In..."
           isLoading={loginLoader}
-          // disabled={!email || !password}
+          disabled={!email || !password}
         />
         <View style={styles.goToNavView}>
           <DescTextButton
             onPress={() => {
-              navigation.navigate('Signup')
+              navigation.navigate('Signup');
             }}
             description="Don't have an account?"
             label="Sign Up"

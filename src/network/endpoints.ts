@@ -1,5 +1,8 @@
 export default {
-  getAllNews: 'v2/everything',
-  getTopHeadline: 'v2/top-headlines',
-  getTopHeadlineSources:'v2/top-headlines/sources'
+  imageUpload: 'uploads/form_data',
+  user: 'users',
+  productCategories: 'products/categories',
+  productCategory: 'products/category',
+  products: 'products',
+  productSearch: 'products/search',
 };

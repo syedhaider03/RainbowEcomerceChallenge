@@ -1,48 +1,62 @@
-import {ManageItemQuantity, SvgIcon} from 'components';
-import {HDP, RF, WiP} from 'helpers';
+import {ManageItemQuantity, SkeletonLoader, SvgIcon} from 'components';
+import {HDP, RF, WiP, getPriceStatus, getRatingResult} from 'helpers';
 import React, {FC} from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-animatable';
 import {family, palette} from 'theme';
 
-type Props = {};
-export const ProductCard: FC<Props> = ({}) => {
+interface Props extends Products.Product {
+  isLoadingComplete: boolean;
+}
+export const ProductCard: FC<Props> = ({
+  isLoadingComplete,
+  title,
+  rating,
+  price,
+  images,
+  brand,
+  stock,
+}) => {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('assets/mock/food.jpg')}
-        style={styles.productImageView}
-        imageStyle={styles.productImage}>
-        <View style={styles.timeView}>
-          <Text style={styles.timeLabel}>10 - 20</Text>
-          <Text style={styles.timeLabelMinute}> min</Text>
-        </View>
-      </ImageBackground>
-      <View style={styles.detailsContainer}>
-        <Text numberOfLines={1} style={styles.labelHeading}>
-          Pure
-        </Text>
-        <View style={styles.ratingsView}>
-          <View style={styles.nestedRatingView}>
-            <SvgIcon name="StarFilled" size={14} />
-            <Text style={styles.ratingLabel}>4.9 Excellent</Text>
+    <SkeletonLoader style={styles.container} isVisible={!isLoadingComplete}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={{uri: images?.[0]}}
+          style={styles.productImageView}
+          imageStyle={styles.productImage}>
+          <View style={styles.timeView}>
+            <Text style={styles.timeLabel}>{brand}</Text>
+            {/* <Text style={styles.timeLabelMinute}> min</Text> */}
           </View>
-          <ManageItemQuantity />
-        </View>
-        <View style={styles.distanceView}>
-          <Text style={styles.distanceLabel}>0.3 miles</Text>
-          <Text>·</Text>
-          <Text style={styles.priceLabel}>£0.49 delivery</Text>
+        </ImageBackground>
+        <View style={styles.detailsContainer}>
+          <Text numberOfLines={1} style={styles.labelHeading}>
+            {title}
+          </Text>
+          <View style={styles.ratingsView}>
+            <View style={styles.nestedRatingView}>
+              <SvgIcon name="StarFilled" size={14} />
+              <Text style={styles.ratingLabel}>
+                {rating} {getRatingResult(rating)}
+              </Text>
+              <Text> · </Text>
+              <Text style={styles.priceLabel}>{stock} Left</Text>
+            </View>
+          </View>
+          <View style={styles.distanceView}>
+            <Text style={styles.distanceLabel}>{getPriceStatus(price)}</Text>
+            <ManageItemQuantity maxQuantity={stock} style={styles.quantityView} />
+          </View>
         </View>
       </View>
-    </View>
+    </SkeletonLoader>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: WiP(93),
-    height: HDP(260),
+    height: HDP(265),
     borderRadius: 3,
     backgroundColor: palette.white,
     shadowOffset: {
@@ -53,7 +67,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 7,
     alignSelf: 'center',
-    marginTop: HDP(15),
+    marginVertical: HDP(7.5),
   },
   productImageView: {
     width: '100%',
@@ -66,7 +80,9 @@ const styles = StyleSheet.create({
   },
   labelHeading: {
     fontFamily: family.PoppinsSemiBold,
-    fontSize: RF(19),
+    fontSize: RF(18),
+    marginBottom: 2,
+    textTransform:"capitalize"
   },
   detailsContainer: {
     paddingHorizontal: 10,
@@ -77,13 +93,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: HDP(1),
-    justifyContent:"space-between"
+    justifyContent: 'space-between',
   },
-  nestedRatingView:{
-    flexDirection:"row",
-    alignItems:'center'
+  nestedRatingView: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  distanceView:{
+  distanceView: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: HDP(1),
@@ -96,17 +112,17 @@ const styles = StyleSheet.create({
   },
   distanceLabel: {
     fontFamily: family.PoppinsMedium,
-    fontSize: RF(15),
-    color: palette.greyText,
+    fontSize: RF(17),
+    color: palette.black,
   },
   priceLabel: {
     fontFamily: family.PoppinsRegular,
-    fontSize: RF(15),
+    fontSize: RF(14),
     marginLeft: 4,
-    color: palette.beetrootRed,
+    color: palette.greyText,
   },
   timeView: {
-    width: WiP(27),
+    maxWidth: WiP(40),
     height: 28,
     borderRadius: 14,
     shadowColor: '#000',
@@ -122,18 +138,24 @@ const styles = StyleSheet.create({
     marginBottom: -10,
     marginRight: 10,
     flexDirection: 'row',
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'absolute',
+    top: 10,
+    left: 10,
   },
   timeLabel: {
-    fontFamily: family.PoppinsSemiBold,
-    fontSize: RF(17),
-    color: palette.black,
+    fontFamily: family.PoppinsRegular,
+    fontSize: RF(14),
+    color: palette.primary,
   },
   timeLabelMinute: {
     fontFamily: family.PoppinsRegular,
     fontSize: RF(15),
     color: palette.black,
+  },
+  quantityView: {
+    bottom: 2,
   },
 });

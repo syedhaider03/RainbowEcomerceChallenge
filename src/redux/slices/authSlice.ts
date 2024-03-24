@@ -1,5 +1,12 @@
+import {toast} from '@backpackapp-io/react-native-toast';
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {AxiosError} from 'axios';
+import {
+  doGetAllUsers,
+  doPostSignup,
+  doPostUploadImage,
+  doPutUserProfile,
+} from 'network';
 import {Dimensions, ScaledSize} from 'react-native';
 import {RootState} from 'redux/store';
 import {patterns} from 'utils/constants';
@@ -11,30 +18,32 @@ interface ValidationErrors {
 
 // Define a type for the slice state
 interface InitialState {
-  user: any;
+  user: Auth.Response;
   signupLoader: boolean;
   loginLoader: boolean;
-  profileUpdatingInProgress:boolean
-  profileImageUploadLoader:boolean
+  updateProfileLoader: boolean;
+  profileUpdatingInProgress: boolean;
+  profileImageUploadLoader: boolean;
 }
 
 // Define the initial state using that type
 const initialState: InitialState = {
-  user: {},
+  user: {} as Auth.Response,
   signupLoader: false,
   loginLoader: false,
-  profileUpdatingInProgress:false,
-  profileImageUploadLoader:false
+  profileUpdatingInProgress: false,
+  profileImageUploadLoader: false,
+  updateProfileLoader: false,
 };
 
 export const doLoginUser = createAsyncThunk<
   Auth.Response,
-  Omit<Auth.LoginPayload, 'fcm_token'>,
+  Auth.LoginPayload,
   {
     rejectValue: ValidationErrors;
     state: RootState;
   }
->('user/login', async (userData, {rejectWithValue, getState}) => {
+>('user/login', async (userData, {rejectWithValue, dispatch}) => {
   try {
     const {email, password} = userData;
     if (!email || !password) {
@@ -43,9 +52,13 @@ export const doLoginUser = createAsyncThunk<
     if (!patterns.EMAIL_GENERAL.test(email)) {
       throw 'Email must be in a valid format.';
     }
-    // const response = await doPostLogin<Auth.Response>({...userData, fcm_token});
-    // return response.data;
-    return {} as any;
+    /* check if user exist */
+    const data = (await dispatch(
+      doVerifyUserExist({email, password, isLoginVerification: true}),
+    ).unwrap()) as Auth.Response;
+    if (data) {
+      return data;
+    } else throw 'Invalid email or password!';
   } catch (err: any) {
     const error: AxiosError<ValidationErrors> = err;
     if (!error.response) {
@@ -56,16 +69,17 @@ export const doLoginUser = createAsyncThunk<
 });
 
 export const doImageUpload = createAsyncThunk<
-  any,
+  ByteScale.imageUploadResponse,
   FormData,
   {
     rejectValue: ValidationErrors;
   }
 >('user/imageUpload', async (data, {rejectWithValue}) => {
   try {
-    // const response = await doPostEventImageUpload<API.NewResponse>(data);
-    // return response.data;
-    return {};
+    const response = await doPostUploadImage<ByteScale.imageUploadResponse>(
+      data,
+    );
+    return response.data;
   } catch (err: any) {
     const error: AxiosError<ValidationErrors> = err;
     if (!error.response) {
@@ -77,32 +91,112 @@ export const doImageUpload = createAsyncThunk<
 
 export const doSignupUser = createAsyncThunk<
   Auth.Response,
-  Omit<Auth.SignupPayload, 'fcm_token'>,
+  Auth.SignupPayload,
   {
     rejectValue: ValidationErrors;
     state: RootState;
   }
->('user/signup', async (userData, {rejectWithValue, getState}) => {
+>('user/signup', async (userData, {rejectWithValue, getState, dispatch}) => {
   try {
-    const {name, email, password, terms_and_conditions, role} = userData;
+    const {name, email, password} = userData;
     if (name.length < 2) {
-      throw "Full Name shouldn't contain any symbol, should contain only and at least 2 letters";
+      throw 'Full Name should contain at least 2 letters';
     }
     if (!patterns.FULLNAME.test(name)) {
-      throw "Full Name shouldn't contain any symbol, should contain only and at least 2 letters";
+      throw "Full Name shouldn't contain any symbol, should contain at least 2 letters";
     }
     if (!patterns.EMAIL_GENERAL.test(email)) {
       throw 'Email must be in a valid format.';
     }
-    if (!patterns.PASSWORD.test(password)) {
-      throw 'Password should be minimum 6 letters containing at least one numeric digit, one uppercase and one lowercase letter';
+    if (password.length < 6) {
+      throw 'Password should be minimum 6 letters';
     }
-    if (terms_and_conditions !== 1) {
-      throw 'Please accept our terms & conditions';
+    /* check if user already exist with email */
+    const isUserExist = await dispatch(
+      doVerifyUserExist({email, password, isLoginVerification: false}),
+    ).unwrap();
+    /* throw error if true */
+    if (isUserExist) {
+      throw 'User with this email already exist!';
     }
-    // const response = await doPostSignup<Auth.Response>({});
-    // return response.data;
-    return {} as any;
+    const response = await doPostSignup<Auth.Response>(userData);
+    return response.data;
+  } catch (err: any) {
+    const error: AxiosError<ValidationErrors> = err;
+    if (!error.response) {
+      throw err;
+    }
+    return rejectWithValue(error.response.data);
+  }
+});
+
+export const doUpdateUserProfile = createAsyncThunk<
+  Auth.Response,
+  Omit<Auth.SignupPayload, 'email'>,
+  {
+    rejectValue: ValidationErrors;
+    state: RootState;
+  }
+>(
+  'user/updateProfile',
+  async (userData, {rejectWithValue, getState, dispatch}) => {
+    try {
+      const {name, password, picture} = userData;
+      if (name.length < 2) {
+        throw 'Full Name should contain at least 2 letters';
+      }
+      if (!patterns.FULLNAME.test(name)) {
+        throw "Full Name shouldn't contain any symbol, should contain at least 2 letters";
+      }
+      if (password.length < 6) {
+        throw 'Password should be minimum 6 letters';
+      }
+      const response = await doPutUserProfile<Auth.Response>(
+        {
+          ...getState().authSlice.user,
+          name,
+          password,
+          picture,
+        },
+        getState()?.authSlice?.user?.id,
+      );
+      return response.data;
+    } catch (err: any) {
+      const error: AxiosError<ValidationErrors> = err;
+      if (!error.response) {
+        throw err;
+      }
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const doVerifyUserExist = createAsyncThunk<
+  boolean | Auth.Response,
+  Auth.VerifyUser,
+  {
+    rejectValue: ValidationErrors;
+    state: RootState;
+  }
+>('user/verify', async (userData, {rejectWithValue, getState}) => {
+  try {
+    const response = await doGetAllUsers<Auth.Response[]>();
+    const {email, password, isLoginVerification} = userData;
+    const data = response.data;
+    /*
+      Because of having a CRUD server, need to manually fetch all
+      users list, and trying to find out the logged In user existence
+     */
+    if (isLoginVerification) {
+      const userData = data.find(
+        item => item.email == email && item.password == password,
+      );
+      if (userData) {
+        return userData;
+      } else return false;
+    } else if (data.find(item => item.email == email)) {
+      return true;
+    } else return false;
   } catch (err: any) {
     const error: AxiosError<ValidationErrors> = err;
     if (!error.response) {
@@ -127,22 +221,12 @@ export const utilSlice = createSlice({
       })
       .addCase(doSignupUser.fulfilled, (state, {payload}) => {
         state.signupLoader = false;
-        // if (!payload.status) {
-        //   showToast(payload.messege);
-        //   return;
-        // }
-        state.user = {
-          ...payload.data,
-          isMerchantPartner: false,
-        };
-
-        // httpPrivateService.privateAgent.defaults.headers.common[
-        //   'Authorization'
-        // ] = payload.Response.auth_token;
+        state.user = payload;
       })
       .addCase(doSignupUser.rejected, (state, action) => {
         state.signupLoader = false;
         console.log(action.error);
+        toast.error(action.error.message as string);
       });
     /*
      * Login Handler
@@ -153,17 +237,46 @@ export const utilSlice = createSlice({
       })
       .addCase(doLoginUser.fulfilled, (state, {payload}) => {
         state.loginLoader = false;
-        state.user = {
-          ...payload.data,
-          isMerchantPartner: !!payload.data.company_name,
-        };
+        state.user = payload;
       })
       .addCase(doLoginUser.rejected, (state, action) => {
         state.loginLoader = false;
+        toast.error(action.error.message as string);
         console.log(action.error);
+      });
+    /*
+     * Image Upload Handler
+     */
+    builder
+      .addCase(doImageUpload.pending, (state, action) => {
+        state.profileImageUploadLoader = true;
+      })
+      .addCase(doImageUpload.fulfilled, (state, {payload}) => {
+        state.profileImageUploadLoader = false;
+      })
+      .addCase(doImageUpload.rejected, (state, action) => {
+        state.profileImageUploadLoader = false;
+        console.log(action.error);
+      });
+    /*
+     * Update Profile Handler
+     */
+    builder
+      .addCase(doUpdateUserProfile.pending, (state, action) => {
+        state.updateProfileLoader = true;
+      })
+      .addCase(doUpdateUserProfile.fulfilled, (state, {payload}) => {
+        state.updateProfileLoader = false;
+        state.user = payload;
+      })
+      .addCase(doUpdateUserProfile.rejected, (state, action) => {
+        state.updateProfileLoader = false;
+        console.log(action.error);
+        toast.error(action.error.message as string);
       });
   },
 });
 
+doUpdateUserProfile;
 export const {} = utilSlice.actions;
 export default utilSlice.reducer;
