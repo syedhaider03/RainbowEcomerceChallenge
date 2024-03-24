@@ -1,22 +1,20 @@
 import {ManageItemQuantity, SkeletonLoader, SvgIcon} from 'components';
 import {HDP, RF, WiP, getPriceStatus, getRatingResult} from 'helpers';
+import {useAppSelector} from 'hooks';
 import React, {FC} from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-animatable';
+import {useDispatch} from 'react-redux';
+import {addCartItem, removeCartItem} from 'slices/productsSlice';
 import {family, palette} from 'theme';
 
 interface Props extends Products.Product {
   isLoadingComplete: boolean;
 }
-export const ProductCard: FC<Props> = ({
-  isLoadingComplete,
-  title,
-  rating,
-  price,
-  images,
-  brand,
-  stock,
-}) => {
+export const ProductCard: FC<Props> = ({isLoadingComplete, ...item}) => {
+  const dispatch = useDispatch();
+  const {title, rating, price, images, brand, stock, id} = item;
+  const {cartItems} = useAppSelector(state => state.productsSlice);
   return (
     <SkeletonLoader style={styles.container} isVisible={!isLoadingComplete}>
       <View style={styles.container}>
@@ -45,7 +43,15 @@ export const ProductCard: FC<Props> = ({
           </View>
           <View style={styles.distanceView}>
             <Text style={styles.distanceLabel}>{getPriceStatus(price)}</Text>
-            <ManageItemQuantity maxQuantity={stock} style={styles.quantityView} />
+            <ManageItemQuantity
+              onPressAdd={quantity =>
+                dispatch(addCartItem({...item, quantity}))
+              }
+              onPressRemove={() => dispatch(removeCartItem(item.id))}
+              maxQuantity={stock}
+              style={styles.quantityView}
+              currentQuantity={cartItems.find(item => item.id == id)?.quantity}
+            />
           </View>
         </View>
       </View>
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
     fontFamily: family.PoppinsSemiBold,
     fontSize: RF(18),
     marginBottom: 2,
-    textTransform:"capitalize"
+    textTransform: 'capitalize',
   },
   detailsContainer: {
     paddingHorizontal: 10,

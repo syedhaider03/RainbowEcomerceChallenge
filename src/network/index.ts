@@ -57,3 +57,9 @@ export const doGetSearchedProducts = <T>(params: Products.QueryParams) => {
     params,
   });
 };
+
+/* Order Endpoints Powered by a Mock Server in Beeceptor */
+
+export const doPostOrder = <T>(data: Order.Payload) => {
+  return httpAuthService.post<T>(endpoints.order, data);
+};

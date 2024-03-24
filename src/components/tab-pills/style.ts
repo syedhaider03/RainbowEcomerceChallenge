@@ -1,6 +1,6 @@
-import { RF } from 'helpers';
+import {RF} from 'helpers';
 import {StyleSheet} from 'react-native';
-import { palette } from 'theme';
+import {palette} from 'theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,10 +25,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor:palette.white,
-    marginBottom:10,
-    marginTop:4,
-    marginLeft:2
+    backgroundColor: palette.white,
+    marginBottom: 10,
+    marginTop: 4,
+    marginLeft: 2,
+  },
+  skeleton: {
+    marginRight: 10,
+    marginBottom: 10,
+    marginTop: 4,
+    marginLeft: 2,
+    width: 90,
+    height: 33,
+    borderRadius: 20,
   },
   activeTab: {
     backgroundColor: palette.primary,
@@ -39,13 +48,12 @@ const styles = StyleSheet.create({
   tabText: {
     color: palette.black,
     fontSize: RF(16),
-    textTransform:"capitalize"
+    textTransform: 'capitalize',
   },
   activeTabText: {
     color: palette.white,
     fontSize: RF(16),
   },
 });
-
 
 export default styles;

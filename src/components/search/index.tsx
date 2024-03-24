@@ -27,7 +27,6 @@ const SearchComponent: React.FC<SearchProps> = ({
   const handleSearch = (query: string) => {
     setSearchTerm(query);
     debouncedSearch(query);
-    // onSearch(query);
   };
 
   return (

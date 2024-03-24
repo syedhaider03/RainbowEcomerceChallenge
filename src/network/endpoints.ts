@@ -5,4 +5,5 @@ export default {
   productCategory: 'products/category',
   products: 'products',
   productSearch: 'products/search',
+  order: 'orders',
 };

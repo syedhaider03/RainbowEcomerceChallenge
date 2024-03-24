@@ -6,6 +6,7 @@ import {
   doGetAllProducts,
   doGetFilteredProducts,
   doGetSearchedProducts,
+  doPostOrder,
 } from 'network';
 import {RootState} from 'redux/store';
 
@@ -16,6 +17,8 @@ interface InitialState {
   categoriesList: Products.Category[];
   categoriesLoading: boolean;
   refreshPaginationType: string;
+  cartItems: Products.CartItem[];
+  orderLoading: boolean;
 }
 
 // Define the initial state using that type
@@ -25,6 +28,8 @@ const initialState: InitialState = {
   categoriesList: [],
   categoriesLoading: false,
   refreshPaginationType: '',
+  cartItems: [],
+  orderLoading: false,
 };
 
 export const doGetAllProductsList = createAsyncThunk<
@@ -36,11 +41,11 @@ export const doGetAllProductsList = createAsyncThunk<
   }
 >('products/getAllProducts', async (query, {rejectWithValue, getState}) => {
   try {
-    console.log({query})
+    console.log({query});
     let response;
     if (query.q)
       response = await doGetSearchedProducts<Products.Response>(query);
-    if (query.category)
+    else if (query.category)
       response = await doGetFilteredProducts<Products.Response>(query.category);
     else response = await doGetAllProducts<Products.Response>(query);
     return response.data;
@@ -116,6 +121,29 @@ export const doGetSearchedProductsList = createAsyncThunk<
   }
 });
 
+export const doPostAOrder = createAsyncThunk<
+  Order.Payload,
+  Products.CartItem[],
+  {
+    rejectValue: ValidationErrors;
+    state: RootState;
+  }
+>('product/order', async (data, {rejectWithValue, getState}) => {
+  try {
+    const payload = {
+      [getState().authSlice.user.id]: data,
+    };
+    const response = await doPostOrder<Order.Payload>(payload);
+    return response.data;
+  } catch (err: any) {
+    const error: AxiosError<ValidationErrors> = err;
+    if (!error.response) {
+      throw err;
+    }
+    return rejectWithValue(error.response.data);
+  }
+});
+
 export const productsSlice = createSlice({
   name: 'productsSlice',
   // `createSlice` will infer the state type from the `initialState` argument
@@ -123,6 +151,20 @@ export const productsSlice = createSlice({
   reducers: {
     setPaginationRefreshId: (state, action: PayloadAction<string>) => {
       state.refreshPaginationType = action.payload;
+    },
+    addCartItem: (state, action: PayloadAction<Products.CartItem>) => {
+      const itemIndex = state.cartItems.findIndex(
+        item => item.id === action.payload.id,
+      );
+      if (itemIndex != -1) {
+        state.cartItems[itemIndex] = action.payload;
+      } else state.cartItems = [...state.cartItems, action.payload];
+    },
+    removeCartItem: (state, action: PayloadAction<number>) => {
+      console.log({action});
+      state.cartItems = state.cartItems.filter(
+        item => item.id != action.payload,
+      );
     },
   },
   extraReducers: builder => {
@@ -189,8 +231,26 @@ export const productsSlice = createSlice({
         console.log(action.error);
         toast.error(action.error.message as string);
       });
+    /*
+     * Order Product Handler
+     */
+    builder
+      .addCase(doPostAOrder.pending, (state, action) => {
+        state.orderLoading = true;
+      })
+      .addCase(doPostAOrder.fulfilled, (state, {payload}) => {
+        state.orderLoading = false;
+        state.cartItems = [];
+        toast.success('Order has been submitted successfully.');
+      })
+      .addCase(doPostAOrder.rejected, (state, action) => {
+        state.orderLoading = false;
+        console.log(action.error);
+        toast.error(action.error.message as string);
+      });
   },
 });
 
-export const {setPaginationRefreshId} = productsSlice.actions;
+export const {setPaginationRefreshId, addCartItem, removeCartItem} =
+  productsSlice.actions;
 export default productsSlice.reducer;

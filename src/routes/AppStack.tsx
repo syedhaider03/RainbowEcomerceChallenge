@@ -6,6 +6,7 @@ import {AppLogo, Logo, SvgIcon} from 'components';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet, Text} from 'react-native';
 import {HDP, RF} from 'helpers';
+import {useAppSelector} from 'hooks';
 
 const Stack = createNativeStackNavigator<ParamList>();
 export const AppStack: FC = () => {
@@ -30,6 +31,7 @@ export default AppStack;
 
 const Tab = createBottomTabNavigator<ParamList>();
 const BottomTabNavigator = () => {
+  const {cartItems} = useAppSelector(state => state.productsSlice);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -69,7 +71,7 @@ const BottomTabNavigator = () => {
               />
             );
           },
-          tabBarBadge: 1,
+          tabBarBadge: cartItems.length > 0 ? cartItems.length : undefined,
           tabBarBadgeStyle: {backgroundColor: 'black'}, // Example style for the badge
         }}
         name="Cart"

@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, ListRenderItem, View} from 'react-native';
 import {Loader, ProductCard} from 'components';
 import {ViewAllHeader} from 'components/view-all-header';
 // import TabPills from 'components/tab-pills';
@@ -30,13 +30,13 @@ export const Products: FC<NativeStackScreenProps<ParamList, 'Products'>> = ({
   );
 
   const {data, initialLoading, paginationProps, resetPageAndReload} =
-    usePagination<Products.Response[]>(
+    usePagination<Products.Product>(
       ({limit, skip}) =>
         dispatch(
           doGetAllProductsList({
             skip,
             limit,
-            category: searchQuery
+            category: !searchQuery
               ? activeTab == 'all'
                 ? undefined
                 : activeTab
@@ -59,14 +59,14 @@ export const Products: FC<NativeStackScreenProps<ParamList, 'Products'>> = ({
 
   const handleTabPress = (tab: string) => {
     setActiveTab(tab);
-    setSearchQuery('')
+    setSearchQuery('');
   };
 
   const onSearch = (query: string) => {
     setSearchQuery(query);
   };
 
-  const renderItem = ({item}: {item: any}) => (
+  const renderItem = ({item}: {item: Products.Product}) => (
     <ProductCard {...item} isLoadingComplete={initialLoading} />
   );
 
@@ -94,27 +94,3 @@ export const Products: FC<NativeStackScreenProps<ParamList, 'Products'>> = ({
     </View>
   );
 };
-
-const categories = [
-  'All Products',
-  'smartphones',
-  'laptops',
-  'fragrances',
-  'skincare',
-  'groceries',
-  'home-decoration',
-  'furniture',
-  'tops',
-  'womens-dresses',
-  'womens-shoes',
-  'mens-shirts',
-  'mens-shoes',
-  'mens-watches',
-  'womens-watches',
-  'womens-bags',
-  'womens-jewellery',
-  'sunglasses',
-  'automotive',
-  'motorcycle',
-  'lighting',
-];

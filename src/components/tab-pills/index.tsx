@@ -30,25 +30,32 @@ const TabPills: React.FC<TabPillsProps> = ({
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollView}
         horizontal>
-        {tabs.map((tab, index) => (
-          <SkeletonLoader style={styles.tab} isVisible={!isLoadingComplete}>
-            <TouchableOpacity
-              key={index}
-              onPress={() => onTabPress(tab)}
-              style={[
-                styles.tab,
-                activeTab === tab ? styles.activeTab : styles.inactiveTab,
-              ]}>
-              <Text
+        {isLoadingComplete
+          ? new Array(10)
+              .fill('')
+              .map((_, index) => (
+                <SkeletonLoader
+                  key={index}
+                  style={styles.skeleton}
+                  isVisible={!isLoadingComplete}></SkeletonLoader>
+              ))
+          : tabs.map((tab, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => onTabPress(tab)}
                 style={[
-                  styles.tabText,
-                  activeTab === tab ? styles.activeTabText : styles.tabText,
+                  styles.tab,
+                  activeTab === tab ? styles.activeTab : styles.inactiveTab,
                 ]}>
-                {tab}
-              </Text>
-            </TouchableOpacity>
-          </SkeletonLoader>
-        ))}
+                <Text
+                  style={[
+                    styles.tabText,
+                    activeTab === tab ? styles.activeTabText : styles.tabText,
+                  ]}>
+                  {tab}
+                </Text>
+              </TouchableOpacity>
+            ))}
       </ScrollView>
     </View>
   );

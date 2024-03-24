@@ -83,5 +83,16 @@ declare module Products {
     thumbnail: string;
     images: string[];
   }
+
+  export interface CartItem extends Product {
+    quantity: number;
+  }
+
   export type Category = string;
+}
+
+declare module Order {
+  export interface Payload {
+    [userId: string]: Products.CartItem[];
+  }
 }

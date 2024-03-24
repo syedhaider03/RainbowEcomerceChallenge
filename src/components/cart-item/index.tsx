@@ -1,10 +1,15 @@
 import {ManageItemQuantity, SvgIcon} from 'components';
 import {HDP, RF, WiP} from 'helpers';
+import {useAppDispatch} from 'hooks';
 import React, {FC} from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
+import {addCartItem, removeCartItem} from 'slices/productsSlice';
 import {family, palette} from 'theme';
 
-export const CartItem: FC = () => {
+interface Props extends Products.CartItem {}
+export const CartItem: FC<Props> = item => {
+  const {images, title, price, stock, brand, category, quantity} = item;
+  const dispatch = useAppDispatch();
   return (
     <View style={styles.container}>
       <View style={styles.topView}>
@@ -13,29 +18,29 @@ export const CartItem: FC = () => {
             style={styles.image}
             resizeMode="contain"
             source={{
-              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-GGuUBa9frqFf_fN74hERS96U60Kc3tRmCSJevvFQg&s',
+              uri: images[0],
             }}
           />
         </View>
         <View style={styles.detailsView}>
           <Text numberOfLines={2} style={styles.title}>
-            MacBook Pro 14" M3
+            {title}
           </Text>
           <View>
             <View style={styles.specsView}>
               <Text numberOfLines={1} style={styles.specNameLabel}>
-                Color:{' '}
+                Brand:{' '}
               </Text>
               <Text numberOfLines={1} style={styles.specNameValue}>
-                Space Grey
+                {brand}
               </Text>
             </View>
             <View style={styles.specsView}>
               <Text numberOfLines={1} style={styles.specNameLabel}>
-                Memory:{' '}
+                Category:{' '}
               </Text>
               <Text numberOfLines={1} style={styles.specNameValue}>
-                8GB unified memory
+                {category}
               </Text>
             </View>
           </View>
@@ -45,11 +50,19 @@ export const CartItem: FC = () => {
         </View>
       </View>
       <View style={styles.bottomView}>
-        <View style={styles.deleteView}>
+        <TouchableOpacity
+          onPress={() => dispatch(removeCartItem(item.id))}
+          style={styles.deleteView}>
           <SvgIcon size={20} name="Delete" />
           <Text style={styles.removeLabel}>Remove</Text>
-        </View>
-        <ManageItemQuantity />
+        </TouchableOpacity>
+        <ManageItemQuantity
+          onPressAdd={quantity => dispatch(addCartItem({...item, quantity}))}
+          onPressRemove={() => dispatch(removeCartItem(item.id))}
+          maxQuantity={stock}
+          currentQuantity={quantity}
+          // restrictRemove
+        />
       </View>
     </View>
   );
@@ -115,6 +128,7 @@ const styles = StyleSheet.create({
     fontFamily: family.PoppinsMedium,
     fontSize: RF(14),
     color: palette.black,
+    textTransform: 'capitalize',
   },
   priceView: {
     alignItems: 'flex-end',
