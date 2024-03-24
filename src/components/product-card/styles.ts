@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   productImage: {
     borderTopRightRadius: 3,
     borderTopLeftRadius: 3,
+    resizeMode:"cover"
   },
   labelHeading: {
     fontFamily: family.PoppinsSemiBold,

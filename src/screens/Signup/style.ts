@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   imageContainer: {
-    marginTop: -20,
+    marginTop: -15,
   },
 });
 export default styles;

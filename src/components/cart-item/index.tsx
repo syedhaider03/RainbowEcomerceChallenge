@@ -45,7 +45,7 @@ export const CartItem: FC<Props> = item => {
           </View>
         </View>
         <View style={styles.priceView}>
-          <Text style={styles.priceText}>£1599</Text>
+          <Text style={styles.priceText}>£{price}</Text>
         </View>
       </View>
       <View style={styles.bottomView}>

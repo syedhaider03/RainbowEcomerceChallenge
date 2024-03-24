@@ -10,7 +10,7 @@ export const UpdateProfile: FC<
   NativeStackScreenProps<ParamList, 'Profile'>
 > = ({navigation, route}) => {
   const dispatch = useAppDispatch();
-  const {profileUpdatingInProgress} = useAppSelector(state => state.authSlice);
+  const {updateProfileLoader} = useAppSelector(state => state.authSlice);
   const {user} = useAppSelector(State => State.authSlice);
   const [fullName, setFullName] = useState<string>(user.name);
   const [userImage, setUserImage] = useState<string>(user.picture ?? '');
@@ -23,16 +23,12 @@ export const UpdateProfile: FC<
         picture: userImage,
         password: password ? password : user.password,
       }),
-    )
-      .unwrap()
-      .then(() => {
-        navigation.goBack();
-      });
+    );
   };
 
-  const onLogout=()=>{
-    dispatch(doLogout())
-  }
+  const onLogout = () => {
+    dispatch(doLogout());
+  };
   return (
     <View style={styles.mainContainer}>
       <KeyboardAvoidingView contentContainerStyle={{flexGrow: 1}}>
@@ -83,7 +79,7 @@ export const UpdateProfile: FC<
           onPress={onPressSubmit}
           label={'Update Profile'}
           loadingText={'Updating...'}
-          isLoading={profileUpdatingInProgress}
+          isLoading={updateProfileLoader}
           disabled={!fullName}
         />
       </View>

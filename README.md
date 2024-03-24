@@ -1,4 +1,54 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+
+# Rainbow Interview Challenge App Features
+
+## Customized App Icon and Splash Screen Logo
+- Customized app icon and splash screen logo design.
+
+## UI/UX Inspiration from Dribbble
+- User interface and user experience design inspired by Dribbble.
+
+## Auth Screens (powered by Beecepter Mock Service):
+- Proper authentication server and logic implemented.
+- Features signup and login functionalities.
+- Users can upload an image during signup and update their profile (Powered by ByteScale Hosting).
+- User offline persistence using Redux Persist.
+- Proper navigation setup to handle user routes based on authentication status.
+- Screenshots:
+  - <img src="screenshots/Login.png" alt="Login" width="220"/>
+  - <img src="screenshots/Signup.png" alt="Signup" width="220"/>
+  - <img src="screenshots/Login_loading.png" alt="Login Loading" width="220"/>
+
+## Product Screen (Powered by DummyJson Rest API Service)
+- Search products by name.
+- Sort products by different categories.
+- Interactive UI/UX design for the product listing page.
+- Users can add/remove items from the cart.
+- Proper pagination support with Skeleton loading.
+- Screenshots:
+  - <img src="screenshots/products.png" alt="Products" width="220"/>
+  - <img src="screenshots/products_loading.png" alt="Products Loading" width="220"/>
+  - <img src="screenshots/products_search.png" alt="Products Search" width="220"/>
+  - <img src="screenshots/item_added.png" alt="Item Added" width="220"/>
+
+## Cart Screen (Powered by Beecepter Rest API service):
+- View items added to the cart.
+- Add/remove items.
+- Manage items quantity.
+- Check the total of all items.
+- Ability to checkout and place order (Stored at Beecepter using customized JSON format).
+- Cart persistence even after the app is closed.
+- Screenshots:
+  - <img src="screenshots/cart.png" alt="Cart" width="220"/>
+  - <img src="screenshots/order_placed.png" alt="Order Placed" width="220"/>
+
+## Update Profile Screen
+- Update Full Name, Profile Image, and Password.
+- Ability to update the profile.
+- Ability to Logout from the App.
+- Screenshots:
+  - <img src="screenshots/profile_updated.png" alt="Profile Updated" width="220"/>
+  - <img src="screenshots/user profile.png" alt="User Profile" width="220"/>
+
 
 # Getting Started
 
@@ -42,38 +92,19 @@ npm run ios
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+If everything is set up _correctly_, you should see the app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+This is one way to run the app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
+### Design Inspiration
 
-Now that you have successfully run the app, let's modify it.
+- Most Design inspiration from Dribbble.
+- Product Screen Inspiraton from shared screenshot provided
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Environment File
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Please make sure to add an `.env` file in the root folder of the project. This file should contain necessary environment variables, particularly for APIs to function properly.
 
-## Congratulations! :tada:
+### Author
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- @syedhaider03

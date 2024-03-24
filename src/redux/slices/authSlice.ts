@@ -271,6 +271,7 @@ export const utilSlice = createSlice({
       .addCase(doUpdateUserProfile.fulfilled, (state, {payload}) => {
         state.updateProfileLoader = false;
         state.user = payload;
+        toast.success("Profile has been updated successfully!");
       })
       .addCase(doUpdateUserProfile.rejected, (state, action) => {
         state.updateProfileLoader = false;
