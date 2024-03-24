@@ -50,6 +50,16 @@
 - Ability to Logout from the App.
   - <img src="screenshots/user profile.png" alt="User Profile" width="220"/>
 
+### Design Inspiration
+
+- Most of the Design inspiration taken from Dribbble.
+- Products page UI is based on the provided screenshot, I had almost finished designing a similar UI for the product display. However, I had to modify it to fit the available data through API.
+
+  - <img src="screenshots/initial_design.png" alt="Profile Updated" width="220"/>
+
+### Environment File
+
+Please make sure to add an `.env` file in the root folder of the project. This file should contain necessary environment variables, particularly for APIs to function properly.
 
 # Getting Started
 
@@ -97,16 +107,6 @@ If everything is set up _correctly_, you should see the app running in your _And
 
 This is one way to run the app — you can also run it directly from within Android Studio and Xcode respectively.
 
-### Design Inspiration
-
-- Most of the Design inspiration taken from Dribbble.
-- Products page UI is based on the provided screenshot, I had almost finished designing a similar UI for the product display. However, I had to modify it to fit the available data through API.
-
-  - <img src="screenshots/initial_design.png" alt="Profile Updated" width="220"/>
-
-### Environment File
-
-Please make sure to add an `.env` file in the root folder of the project. This file should contain necessary environment variables, particularly for APIs to function properly.
 
 ### Author
 
