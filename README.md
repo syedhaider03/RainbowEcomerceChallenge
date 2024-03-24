@@ -29,6 +29,9 @@
   - <img src="screenshots/products_loading.png" alt="Products Loading" width="220"/>
   - <img src="screenshots/products_search.png" alt="Products Search" width="220"/>
   - <img src="screenshots/item_added.png" alt="Item Added" width="220"/>
+  - <img src="screenshots/pull_to_refresh.png" alt="Item Added" width="220"/>
+  - <img src="screenshots/pagination.png" alt="Item Added" width="220"/>
+
 
 ## Cart Screen (Powered by Beecepter Rest API service):
 - View items added to the cart.
