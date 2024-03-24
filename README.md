@@ -1,18 +1,24 @@
-
 # Rainbow Interview Challenge App Features
 
 ## Video Demonstration
+
 - [Watch the video demonstration](https://drive.google.com/file/d/1EKIZGxgAFJ_yAyIxWXbcAr2_gMAj6aE7/view?usp=sharing)
 
+## Introduction
+ This application is built on top of React Native using TypeScript, employing Redux Toolkit for state management, React Navigation for navigation, and Redux Persist for state persistence. 
+
 ## Customized App Icon and Splash Screen Logo
+
 - Customized app icon and splash screen logo design.
 
   - <img src="screenshots/splash.png" alt="Login" width="220"/>
 
 ## UI/UX Inspiration from Dribbble
+
 - User interface and user experience design inspired by Dribbble.
 
 ## Auth Screens (powered by Beecepter Mock Service):
+
 - Proper navigation setup to handle user routes based on authentication status.
 
   - <img src="screenshots/Login.png" alt="Login" width="220"/>
@@ -28,6 +34,7 @@
   - <img src="screenshots/Login_loading.png" alt="Login Loading" width="220"/>
 
 ## Product Screen (Powered by DummyJson Rest API Service)
+
 - Interactive UI/UX design for the product listing page.
 - Sort products by different categories.
 
@@ -50,8 +57,8 @@
   - <img src="screenshots/pull_to_refresh.png" alt="Item Added" width="220"/>
   - <img src="screenshots/pagination.png" alt="Item Added" width="220"/>
 
-
 ## Cart Screen (Powered by Beecepter Rest API service):
+
 - View items added to the cart.
 - Add/remove items.
 - Manage items quantity.
@@ -65,6 +72,7 @@
   - <img src="screenshots/order_placed.png" alt="Order Placed" width="220"/>
 
 ## Update Profile Screen
+
 - Update Full Name, Profile Image, and Password.
 
   - <img src="screenshots/profile_updated.png" alt="Profile Updated" width="220"/>
@@ -73,6 +81,10 @@
 - Ability to Logout from the App.
 
   - <img src="screenshots/user profile.png" alt="User Profile" width="220"/>
+
+  ## Atomic Design Pattern
+
+  I decided to implement the atomic design pattern in this project because it offers several advantages in terms of scalability, maintainability, and reusability. Essentially, atomic design involves breaking down UI components into smaller, reusable elements such as atoms, molecules, organisms, templates, and pages. This approach promotes consistency and modular development, which makes it easier to manage and scale projects over time.
 
 ### Design Inspiration
 
@@ -91,7 +103,7 @@ Please make sure to add an `.env` file in the root folder of the project. This f
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -134,7 +146,6 @@ yarn ios
 If everything is set up _correctly_, you should see the app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run the app — you can also run it directly from within Android Studio and Xcode respectively.
-
 
 ### Author
 
