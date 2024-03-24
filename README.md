@@ -4,6 +4,8 @@
 ## Customized App Icon and Splash Screen Logo
 - Customized app icon and splash screen logo design.
 
+  - <img src="screenshots/splash.png" alt="Login" width="220"/>
+
 ## UI/UX Inspiration from Dribbble
 - User interface and user experience design inspired by Dribbble.
 
