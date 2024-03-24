@@ -18,6 +18,7 @@ const App = () => {
     };
     connectToRemoteDebugger();
   }, []);
+  
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

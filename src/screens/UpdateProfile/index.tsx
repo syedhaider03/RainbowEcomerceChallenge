@@ -1,18 +1,16 @@
-import React, {FC, useEffect, useState} from 'react';
-
+import React, {FC, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Text, View} from 'react-native';
 import {useAppDispatch, useAppSelector} from 'hooks';
 import {Button, Input, KeyboardAvoidingView, ProfileAvatar} from 'components';
 import styles from './style';
-import {doUpdateUserProfile} from 'slices/authSlice';
+import {doLogout, doUpdateUserProfile} from 'slices/authSlice';
 
 export const UpdateProfile: FC<
   NativeStackScreenProps<ParamList, 'Profile'>
 > = ({navigation, route}) => {
   const dispatch = useAppDispatch();
   const {profileUpdatingInProgress} = useAppSelector(state => state.authSlice);
-
   const {user} = useAppSelector(State => State.authSlice);
   const [fullName, setFullName] = useState<string>(user.name);
   const [userImage, setUserImage] = useState<string>(user.picture ?? '');
@@ -32,6 +30,9 @@ export const UpdateProfile: FC<
       });
   };
 
+  const onLogout=()=>{
+    dispatch(doLogout())
+  }
   return (
     <View style={styles.mainContainer}>
       <KeyboardAvoidingView contentContainerStyle={{flexGrow: 1}}>
@@ -73,7 +74,7 @@ export const UpdateProfile: FC<
       <View style={styles.buttonWrapper}>
         <Button
           style={styles.cancelButton}
-          onPress={() => navigation.goBack()}
+          onPress={onLogout}
           label={'Logout'}
           labelStyle={styles.btnLabelStyle}
         />
@@ -83,7 +84,7 @@ export const UpdateProfile: FC<
           label={'Update Profile'}
           loadingText={'Updating...'}
           isLoading={profileUpdatingInProgress}
-          // disabled={!fullName || !phone || (!latitude && !longitude)}
+          disabled={!fullName}
         />
       </View>
     </View>

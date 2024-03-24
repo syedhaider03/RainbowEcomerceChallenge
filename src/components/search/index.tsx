@@ -1,10 +1,8 @@
 import React, {useCallback, useState} from 'react';
-import {TextInput, View, StyleSheet} from 'react-native';
-import {debounce} from 'lodash'; // Import lodash debounce function
-import {Search} from 'assets/svgs';
+import {TextInput, View} from 'react-native';
+import {debounce} from 'lodash'; 
 import {SvgIcon} from 'components';
-import { HDP, WiP } from 'helpers';
-
+import styles from './style';
 interface SearchProps {
   onSearch: (query: string) => void;
   placeholder?: string;
@@ -44,28 +42,6 @@ const SearchComponent: React.FC<SearchProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#f2f2f2',
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    marginHorizontal: 10,
-    width:WiP(93),
-    alignSelf:'center',
-    marginTop:HDP(15)
-  },
-  searchIcon: {
-    marginRight: 10,
-  },
-  input: {
-    flex: 1,
-    paddingVertical: 10,
-    fontSize: 16,
-    color: 'black',
-    marginLeft:8
-  },
-});
+
 
 export default SearchComponent;

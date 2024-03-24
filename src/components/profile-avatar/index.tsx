@@ -20,6 +20,7 @@ type Props = {
   isViewOnly?: boolean;
   isDetailsLoading?: boolean;
   setImage?: Dispatch<SetStateAction<string>>;
+  isLoading?: boolean;
 };
 export const ProfileAvatar: FC<Props> = ({
   initialText,

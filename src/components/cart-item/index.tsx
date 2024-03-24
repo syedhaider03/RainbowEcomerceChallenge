@@ -1,10 +1,9 @@
 import {ManageItemQuantity, SvgIcon} from 'components';
-import {HDP, RF, WiP} from 'helpers';
 import {useAppDispatch} from 'hooks';
 import React, {FC} from 'react';
-import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {addCartItem, removeCartItem} from 'slices/productsSlice';
-import {family, palette} from 'theme';
+import styles from './styles';
 
 interface Props extends Products.CartItem {}
 export const CartItem: FC<Props> = item => {
@@ -67,92 +66,3 @@ export const CartItem: FC<Props> = item => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: WiP(93),
-    height: HDP(150),
-    alignSelf: 'center',
-    marginTop: 20,
-    // shadowColor: '#000',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 2,
-    // },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.84,
-
-    // elevation: 5,
-    // backgroundColor: palette.white,
-    // paddingHorizontal:WiP(3),
-    // paddingVertical:HDP(10)
-  },
-  topView: {
-    flexDirection: 'row',
-    flex: 1,
-  },
-  imageView: {
-    width: WiP(20),
-    height: HDP(70),
-    borderWidth: 1,
-    borderColor: palette.darkgrey,
-    borderRadius: 7,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: WiP(15),
-    height: HDP(50),
-  },
-  detailsView: {
-    paddingLeft: 10,
-    justifyContent: 'space-between',
-    height: HDP(70),
-  },
-  title: {
-    fontFamily: family.PoppinsMedium,
-    fontSize: RF(18),
-    color: palette.black,
-    width: WiP(52),
-  },
-  specsView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  specNameLabel: {
-    fontFamily: family.PoppinsRegular,
-    fontSize: RF(14),
-    color: palette.greyText,
-  },
-  specNameValue: {
-    fontFamily: family.PoppinsMedium,
-    fontSize: RF(14),
-    color: palette.black,
-    textTransform: 'capitalize',
-  },
-  priceView: {
-    alignItems: 'flex-end',
-    flex: 1,
-  },
-  priceText: {
-    fontFamily: family.PoppinsSemiBold,
-    fontSize: RF(18),
-    color: palette.primary,
-  },
-  bottomView: {
-    flex: 0.6,
-    justifyContent: 'space-between',
-    marginLeft: WiP(22),
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  deleteView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  removeLabel: {
-    fontFamily: family.PoppinsRegular,
-    fontSize: RF(15),
-    color: palette.beetrootRed,
-  },
-});

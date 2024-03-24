@@ -1,8 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
-import {FlatList, ListRenderItem, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {Loader, ProductCard} from 'components';
 import {ViewAllHeader} from 'components/view-all-header';
-// import TabPills from 'components/tab-pills';
 import {useAppDispatch, useAppSelector, usePagination} from 'hooks';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import styles from './styles';
@@ -10,12 +9,7 @@ import TabPills from 'components/tab-pills';
 import SearchComponent from 'components/search';
 import {PAGINATION_ID} from 'utils/constants';
 import {doGetAllProductsList, doGetCategoriesList} from 'slices/productsSlice';
-import {act} from 'react-test-renderer';
 
-interface Item {}
-
-const ItemSeparator = () => <View style={styles.separator} />;
-const ListHeaderComponent = () => <View style={styles.listHeader} />;
 
 export const Products: FC<NativeStackScreenProps<ParamList, 'Products'>> = ({
   route,

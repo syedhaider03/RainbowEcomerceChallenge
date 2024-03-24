@@ -1,5 +1,5 @@
 import {toast} from '@backpackapp-io/react-native-toast';
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {PayloadAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {AxiosError} from 'axios';
 import {
   doGetAllUsers,
@@ -7,7 +7,6 @@ import {
   doPostUploadImage,
   doPutUserProfile,
 } from 'network';
-import {Dimensions, ScaledSize} from 'react-native';
 import {RootState} from 'redux/store';
 import {patterns} from 'utils/constants';
 
@@ -210,7 +209,11 @@ export const utilSlice = createSlice({
   name: 'authSlice',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
-  reducers: {},
+  reducers: {
+    doLogout: (state, action: PayloadAction<undefined>) => {
+      state.user = {} as Auth.Response;
+    },
+  },
   extraReducers: builder => {
     /*
      * Signup Handler
@@ -278,5 +281,5 @@ export const utilSlice = createSlice({
 });
 
 doUpdateUserProfile;
-export const {} = utilSlice.actions;
+export const {doLogout} = utilSlice.actions;
 export default utilSlice.reducer;

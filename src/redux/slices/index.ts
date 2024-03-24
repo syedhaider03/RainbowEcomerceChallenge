@@ -11,10 +11,17 @@ const persistConfig = {
   whitelist: ['user'],
 };
 
+const persistCartConfig = {
+  key: 'orders',
+  storage: AsyncStorage,
+  whitelist: ['cartItems'],
+};
+
 const persistedReducer = persistReducer(persistConfig, authSlice);
+const persistedProductsReducer = persistReducer(persistCartConfig, productsSlice);
 const rootReducer = combineReducers({
   authSlice: persistedReducer,
-  productsSlice: productsSlice,
+  productsSlice: persistedProductsReducer,
 });
 
 export default rootReducer;

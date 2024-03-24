@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {family, palette} from 'theme';
+import {palette} from 'theme';
 import {CartScreen, Products, UpdateProfile} from 'screens';
-import {AppLogo, Logo, SvgIcon} from 'components';
+import {AppLogo, SvgIcon} from 'components';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {StyleSheet, Text} from 'react-native';
-import {HDP, RF} from 'helpers';
 import {useAppSelector} from 'hooks';
+import styles from './styles';
+import { Text } from 'react-native';
 
 const Stack = createNativeStackNavigator<ParamList>();
 export const AppStack: FC = () => {
@@ -23,7 +23,6 @@ export const AppStack: FC = () => {
         headerTitle: () => <AppLogo size={60} />,
       }}>
       <Stack.Screen name="Home" component={BottomTabNavigator} />
-      {/* <Stack.Screen name="Details" component={NewsDetailsScreen} /> */}
     </Stack.Navigator>
   );
 };
@@ -95,34 +94,3 @@ const BottomTabNavigator = () => {
     </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  tabLabel: {
-    fontFamily: family.PoppinsRegular,
-    fontSize: RF(12.5),
-    color: palette.black,
-  },
-  focused: {
-    color: palette.primary,
-  },
-  tabbar: {
-    borderTopWidth: 0,
-    backgroundColor: palette.white,
-    shadowColor: palette.primary,
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.4,
-    shadowRadius: 4.65,
-    elevation: 7,
-    paddingTop: 5,
-  },
-  centeredIcon: {
-    paddingBottom: HDP(5),
-  },
-  androidSpecific: {
-    paddingBottom: 5,
-    height: HDP(60),
-  },
-});
