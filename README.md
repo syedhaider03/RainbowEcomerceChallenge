@@ -21,16 +21,16 @@ This application is built on top of React Native using TypeScript, employing Red
 ## Auth Screens (powered by Beecepter Mock Service):
 
 - Proper navigation setup to handle user routes based on authentication status.
+- Features signup and login functionalities.
+- Users can upload an image during signup and update their profile (Powered by ByteScale Hosting).
+- User offline persistence using Redux Persist.
+- Proper authentication server and logic implemented.
+
+# Screenshots
 
   - <img src="screenshots/Login.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
-- Features signup and login functionalities.
-- Users can upload an image during signup and update their profile (Powered by ByteScale Hosting).
-
   - <img src="screenshots/Signup.png" alt="Signup" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-- User offline persistence using Redux Persist.
-- Proper authentication server and logic implemented.
 
   - <img src="screenshots/Login_loading.png" alt="Login Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
@@ -38,30 +38,31 @@ This application is built on top of React Native using TypeScript, employing Red
 
 - Interactive UI/UX design for the product listing page.
 - Sort products by different categories.
+- Proper pagination support with Skeleton loading.
+- Search products by name.
+- Users can add/remove items from the cart.
+- Pull to refresh and Pagination.
+
+# Screenshots
 
   - <img src="screenshots/products.png" alt="Products" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
-- Proper pagination support with Skeleton loading.
-
   - <img src="screenshots/products_loading.png" alt="Products Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-- Search products by name.
 
   - <img src="screenshots/products_search.png" alt="Products Search" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
-- Users can add/remove items from the cart.
-
   - <img src="screenshots/item_added.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
-- Pull to refresh and Pagination.
-
   - <img src="screenshots/pull_to_refresh.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
   - <img src="screenshots/pagination.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Product Details Screen
 
 - Details screen to show Product Details
 - Add to Cart option
+
+# Screenshot
 
   - <img src="screenshots/product_details.png" alt="Products" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
@@ -70,29 +71,30 @@ This application is built on top of React Native using TypeScript, employing Red
 - View items added to the cart.
 - Add/remove items.
 - Manage items quantity.
-
-  - <img src="screenshots/cart.png" alt="Cart" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
 - Check the total of all items.
 - Ability to checkout and place order (Stored at Beecepter using customized JSON format).
 - Cart persistence even after the app is closed.
+- Checkout Popup and Order placement loader.
 
-  - <img src="screenshots/order_placed.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+# Screenshots
 
-- Checkout Popup and Placing Order Indicator
+  - <img src="screenshots/cart.png" alt="Cart" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
   - <img src="screenshots/checkout_screen.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
   - <img src="screenshots/order_placing.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
+  - <img src="screenshots/order_placed.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
 ## Update Profile Screen
 
 - Update Full Name, Profile Image, and Password.
-
-  - <img src="screenshots/profile_updated.png" alt="Profile Updated" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
 - Ability to update the profile.
 - Ability to Logout from the App.
+
+# Screenshots
+
+  - <img src="screenshots/profile_updated.png" alt="Profile Updated" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
   - <img src="screenshots/user profile.png" alt="User Profile" alt="User Profile" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
