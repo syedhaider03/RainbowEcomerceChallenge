@@ -3,6 +3,7 @@
 ## Video Demonstration
 
 - [Watch the video demonstration](https://drive.google.com/file/d/1EKIZGxgAFJ_yAyIxWXbcAr2_gMAj6aE7/view?usp=sharing)
+- [V2.0 Video](https://drive.google.com/file/d/12IWNKcMtLXmpJEXnnxqnwpkQYGX5CmG-/view?usp=sharing)
 
 ## Introduction
 
