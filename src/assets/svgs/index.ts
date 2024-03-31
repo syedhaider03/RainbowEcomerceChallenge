@@ -18,3 +18,7 @@ export {default as Profile} from './profile.svg';
 export {default as CartActive} from './cart_active.svg';
 export {default as Cart} from './cart.svg';
 export {default as Delete} from './delete.svg';
+export {default as Back} from './back.svg';
+export {default as Close} from './close.svg';
+export {default as EditIcon} from './editicon.svg'
+export {default as Card} from './card.svg'

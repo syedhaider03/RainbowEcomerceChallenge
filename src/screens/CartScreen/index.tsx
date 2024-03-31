@@ -2,14 +2,16 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Button, CartItem} from 'components';
 import {HDP, RF, WiP} from 'helpers';
 import {useAppDispatch, useAppSelector} from 'hooks';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import {doPostAOrder} from 'slices/productsSlice';
 import styles from './styles';
+import {Checkout} from 'screens';
 
 export const CartScreen: FC<NativeStackScreenProps<ParamList, 'Cart'>> = ({
   navigation,
 }) => {
+  const [isCheckoutVisible, setCheckoutVisible] = useState(false);
   const {cartItems, orderLoading} = useAppSelector(
     state => state.productsSlice,
   );
@@ -22,7 +24,11 @@ export const CartScreen: FC<NativeStackScreenProps<ParamList, 'Cart'>> = ({
   }, 0);
 
   const onSubmit = () => {
-    dispatch(doPostAOrder(cartItems));
+    dispatch(doPostAOrder(cartItems))
+      .unwrap()
+      .then(() => {
+        setCheckoutVisible(false);
+      });
   };
 
   return (
@@ -52,16 +58,20 @@ export const CartScreen: FC<NativeStackScreenProps<ParamList, 'Cart'>> = ({
           />
           <Button
             style={styles.mainButton}
-            onPress={onSubmit}
+            onPress={() => setCheckoutVisible(true)}
             label={'Checkout'}
-            loadingText={'Updating...'}
+            loadingText={'Submitting...'}
             disabled={cartItems.length < 1}
             isLoading={orderLoading}
           />
         </View>
       </View>
+      <Checkout
+        isVisible={isCheckoutVisible}
+        onClose={() => setCheckoutVisible(false)}
+        onSubmit={onSubmit}
+        total={total}
+      />
     </View>
   );
 };
-
-

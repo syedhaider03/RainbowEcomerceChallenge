@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {palette} from 'theme';
-import {CartScreen, Products, UpdateProfile} from 'screens';
+import {CartScreen, ProductDetails, Products, UpdateProfile} from 'screens';
 import {AppLogo, SvgIcon} from 'components';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useAppSelector} from 'hooks';
 import styles from './styles';
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 
 const Stack = createNativeStackNavigator<ParamList>();
 export const AppStack: FC = () => {
@@ -23,6 +23,15 @@ export const AppStack: FC = () => {
         headerTitle: () => <AppLogo size={60} />,
       }}>
       <Stack.Screen name="Home" component={BottomTabNavigator} />
+      <Stack.Screen
+        options={{
+          // headerTitle: 'View Product',
+          animation: 'fade_from_bottom',
+          // headerShown: false,
+        }}
+        name="ProductDetails"
+        component={ProductDetails}
+      />
     </Stack.Navigator>
   );
 };
