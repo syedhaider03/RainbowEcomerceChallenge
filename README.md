@@ -35,9 +35,9 @@ This application is built on top of React Native using TypeScript, employing Red
 ### Screenshots
 
 - <img src="screenshots/Login.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/Signup.png" alt="Signup" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/Login_loading.png" alt="Login Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Product Screen (Powered by DummyJson Rest API Service)
@@ -61,15 +61,15 @@ This section outlines the comprehensive features of the product listing page UI/
 ### Screenshots
 
 - <img src="screenshots/products.png" alt="Products" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/products_loading.png" alt="Products Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/products_search.png" alt="Products Search" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/item_added.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/pull_to_refresh.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/pagination.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Product Details Screen
@@ -109,11 +109,11 @@ This section outlines the features of the Cart Screen, leveraging the Beecepter 
 ### Screenshots
 
 - <img src="screenshots/cart.png" alt="Cart" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/checkout_screen.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/order_placing.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/order_placed.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Update Profile Screen
@@ -131,7 +131,7 @@ This section outlines the features of the Update Profile Screen, providing users
 ### Screenshots
 
 - <img src="screenshots/user profile.png" alt="User Profile" alt="User Profile" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
+<br>
 - <img src="screenshots/profile_updated.png" alt="Profile Updated" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Atomic Design Pattern
