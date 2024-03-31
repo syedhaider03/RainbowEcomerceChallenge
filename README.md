@@ -1,38 +1,35 @@
-# Rainbow Interview Challenge App Features
+# Rainbow Interview Challenge App
 
 ## Video Demonstration
 
-- [Watch the video demonstration](https://drive.google.com/file/d/1EKIZGxgAFJ_yAyIxWXbcAr2_gMAj6aE7/view?usp=sharing)
+- [Watch the Video Demonstration](https://drive.google.com/file/d/1EKIZGxgAFJ_yAyIxWXbcAr2_gMAj6aE7/view?usp=sharing)
 
 ## Introduction
 
-This application is built on top of React Native using TypeScript, employing Redux Toolkit for state management, React Navigation for navigation, and Redux Persist for state persistence.
+The Rainbow Interview Challenge App is developed using React Native with TypeScript. It utilizes Redux Toolkit for state management, React Navigation for navigation, and Redux Persist for state persistence.
 
 ## Customized App Icon and Splash Screen Logo
 
 - Customized app icon and splash screen logo design.
-
-  - <img src="screenshots/splash.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"F/>
+  - ![Splash Screen](screenshots/splash.png)
 
 ## UI/UX Inspiration from Dribbble
 
-- User interface and user experience design inspired by Dribbble.
+- UI/UX design inspired by Dribbble.
 
-## Auth Screens (powered by Beecepter Mock Service):
+## Authentication Screens (powered by Beecepter Mock Service):
 
-- Proper navigation setup to handle user routes based on authentication status.
-- Features signup and login functionalities.
-- Users can upload an image during signup and update their profile (Powered by ByteScale Hosting).
+- Proper navigation setup for user routes based on authentication status.
+- Includes signup and login functionalities.
+- Users can upload an image during signup and update their profile.
 - User offline persistence using Redux Persist.
-- Proper authentication server and logic implemented.
+- Implemented proper authentication server and logic.
 
-# Screenshots
+### Screenshots
 
-  - <img src="screenshots/Login.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/Signup.png" alt="Signup" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/Login_loading.png" alt="Login Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+- ![Login](screenshots/Login.png)
+- ![Signup](screenshots/Signup.png)
+- ![Login Loading](screenshots/Login_loading.png)
 
 ## Product Screen (Powered by DummyJson Rest API Service)
 
@@ -43,28 +40,23 @@ This application is built on top of React Native using TypeScript, employing Red
 - Users can add/remove items from the cart.
 - Pull to refresh and Pagination.
 
-# Screenshots
+### Screenshots
 
-  - <img src="screenshots/products.png" alt="Products" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/products_loading.png" alt="Products Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/products_search.png" alt="Products Search" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/item_added.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/pull_to_refresh.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/pagination.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+- ![Products](screenshots/products.png)
+- ![Products Loading](screenshots/products_loading.png)
+- ![Products Search](screenshots/products_search.png)
+- ![Item Added](screenshots/item_added.png)
+- ![Pull to Refresh](screenshots/pull_to_refresh.png)
+- ![Pagination](screenshots/pagination.png)
 
 ## Product Details Screen
 
 - Details screen to show Product Details
 - Add to Cart option
 
-# Screenshot
+### Screenshot
 
-  - <img src="screenshots/product_details.png" alt="Products" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+- ![Product Details](screenshots/product_details.png)
 
 ## Cart Screen (Powered by Beecepter Rest API service):
 
@@ -72,19 +64,16 @@ This application is built on top of React Native using TypeScript, employing Red
 - Add/remove items.
 - Manage items quantity.
 - Check the total of all items.
-- Ability to checkout and place order (Stored at Beecepter using customized JSON format).
+- Ability to checkout and place order.
 - Cart persistence even after the app is closed.
 - Checkout Popup and Order placement loader.
 
-# Screenshots
+### Screenshots
 
-  - <img src="screenshots/cart.png" alt="Cart" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/checkout_screen.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/order_placing.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
-
-  - <img src="screenshots/order_placed.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+- ![Cart](screenshots/cart.png)
+- ![Order Placed](screenshots/checkout_screen.png)
+- ![Order Placing](screenshots/order_placing.png)
+- ![Order Placed](screenshots/order_placed.png)
 
 ## Update Profile Screen
 
@@ -92,15 +81,14 @@ This application is built on top of React Native using TypeScript, employing Red
 - Ability to update the profile.
 - Ability to Logout from the App.
 
-# Screenshots
+### Screenshots
 
-  - <img src="screenshots/profile_updated.png" alt="Profile Updated" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+- ![User Profile](screenshots/user_profile.png)
+- ![Profile Updated](screenshots/profile_updated.png)
 
-  - <img src="screenshots/user profile.png" alt="User Profile" alt="User Profile" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+## Atomic Design Pattern
 
-  ## Atomic Design Pattern
-
-  I decided to implement the atomic design pattern in this project because it offers several advantages in terms of scalability, maintainability, and reusability. Essentially, atomic design involves breaking down UI components into smaller, reusable elements such as atoms, molecules, organisms, templates, and pages. This approach promotes consistency and modular development, which makes it easier to manage and scale projects over time.
+I decided to implement the atomic design pattern in this project because it offers several advantages in terms of scalability, maintainability, and reusability. Essentially, atomic design involves breaking down UI components into smaller, reusable elements such as atoms, molecules, organisms, templates, and pages. This approach promotes consistency and modular development, which makes it easier to manage and scale projects over time.
 
 ### Design Inspiration
 
