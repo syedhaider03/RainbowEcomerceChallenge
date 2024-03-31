@@ -75,6 +75,7 @@ This section outlines the comprehensive features of the product listing page UI/
   <br>
 <img src="screenshots/pagination.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 </div>
+
 ## Product Details Screen
 
 This section describes the Product Details Screen, providing users with comprehensive information about a specific product and enabling seamless interactions.
@@ -134,6 +135,7 @@ This section outlines the features of the Update Profile Screen, providing users
 - **Logout Option:** Provides users with the ability to log out from the application, enhancing security and offering a convenient way to end their session.
 
 ### Screenshots
+
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
 <img src="screenshots/user profile.png" alt="User Profile" alt="User Profile" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
   <br>
