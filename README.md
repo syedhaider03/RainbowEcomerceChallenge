@@ -1,90 +1,138 @@
-# Rainbow Interview Challenge App
+# Rainbow Interview Challenge App Features
 
 ## Video Demonstration
 
-- [Watch the Video Demonstration](https://drive.google.com/file/d/1EKIZGxgAFJ_yAyIxWXbcAr2_gMAj6aE7/view?usp=sharing)
+- [Watch the video demonstration](https://drive.google.com/file/d/1EKIZGxgAFJ_yAyIxWXbcAr2_gMAj6aE7/view?usp=sharing)
 
 ## Introduction
 
-The Rainbow Interview Challenge App is developed using React Native with TypeScript. It utilizes Redux Toolkit for state management, React Navigation for navigation, and Redux Persist for state persistence.
+This application is built on top of React Native using TypeScript, employing Redux Toolkit for state management, React Navigation for navigation, and Redux Persist for state persistence.
 
 ## Customized App Icon and Splash Screen Logo
 
 - Customized app icon and splash screen logo design.
-  - ![Splash Screen](screenshots/splash.png)
+
+  - <img src="screenshots/splash.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"F/>
 
 ## UI/UX Inspiration from Dribbble
 
-- UI/UX design inspired by Dribbble.
+- User interface and user experience design inspired by Dribbble.
 
-## Authentication Screens (powered by Beecepter Mock Service):
+## Auth Screens (powered by Beecepter Mock Service):
 
-- Proper navigation setup for user routes based on authentication status.
-- Includes signup and login functionalities.
-- Users can upload an image during signup and update their profile.
-- User offline persistence using Redux Persist.
-- Implemented proper authentication server and logic.
+## Key Features:
+
+- **Efficient Navigation:** Implements a robust navigation setup adept at managing user routes, adapting dynamically based on the authentication status of the user.
+
+- **Signup and Login:** Provides streamlined signup and login functionalities, ensuring a user-friendly experience for account creation and authentication.
+
+- **Profile Image Management:** Users can upload an image during the signup process and update their profile picture effortlessly. This feature is powered by ByteScale Hosting, ensuring reliability and scalability.
+
+- **Offline Persistence:** Utilizes Redux Persist to ensure user data persistence even when offline, enhancing the reliability of the application.
+
+- **Secure Authentication:** Implements a robust authentication server and logic, ensuring the security of user credentials and sensitive data.
 
 ### Screenshots
 
-- ![Login](screenshots/Login.png)
-- ![Signup](screenshots/Signup.png)
-- ![Login Loading](screenshots/Login_loading.png)
+- <img src="screenshots/Login.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/Signup.png" alt="Signup" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/Login_loading.png" alt="Login Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Product Screen (Powered by DummyJson Rest API Service)
 
-- Interactive UI/UX design for the product listing page.
-- Sort products by different categories.
-- Proper pagination support with Skeleton loading.
-- Search products by name.
-- Users can add/remove items from the cart.
-- Pull to refresh and Pagination.
+This section outlines the comprehensive features of the product listing page UI/UX designed to enhance user engagement and streamline product discovery. Leveraging Interactive Designs, these features ensure a dynamic and intuitive browsing experience for your users.
+
+## Key Features:
+
+- **Interactive UI/UX Design:** Engaging design elements enhance user experience, facilitating seamless navigation and intuitive interaction with product listings.
+
+- **Category-based Sorting:** Enables users to sort products by different categories, providing flexibility and convenience in browsing.
+
+- **Pagination with Skeleton Loading:** Implements proper pagination support with skeleton loading, ensuring smooth transitions and enhancing the perceived performance of the application.
+
+- **Search Functionality:** Empowers users to search for products by name, facilitating quick and efficient product discovery.
+
+- **Cart Management:** Users can easily add or remove items from their cart, streamlining the shopping experience and enhancing user satisfaction.
+
+- **Pull-to-Refresh and Pagination:** Incorporates pull-to-refresh functionality for refreshing product listings and seamless pagination for browsing through extensive product catalogs.
 
 ### Screenshots
 
-- ![Products](screenshots/products.png)
-- ![Products Loading](screenshots/products_loading.png)
-- ![Products Search](screenshots/products_search.png)
-- ![Item Added](screenshots/item_added.png)
-- ![Pull to Refresh](screenshots/pull_to_refresh.png)
-- ![Pagination](screenshots/pagination.png)
+- <img src="screenshots/products.png" alt="Products" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/products_loading.png" alt="Products Loading" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/products_search.png" alt="Products Search" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/item_added.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/pull_to_refresh.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/pagination.png" alt="Item Added" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Product Details Screen
 
-- Details screen to show Product Details
-- Add to Cart option
+This section describes the Product Details Screen, providing users with comprehensive information about a specific product and enabling seamless interactions.
+
+### Key Features:
+
+- **Detailed Product Information:** Presents detailed information about the selected product, including description, specifications, and pricing, ensuring users have all the necessary details to make informed decisions.
+
+- **Add to Cart Option:** Allows users to easily add the product to their cart directly from the details screen, streamlining the purchasing process and enhancing user convenience.
 
 ### Screenshot
 
-- ![Product Details](screenshots/product_details.png)
+- <img src="screenshots/product_details.png" alt="Products" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Cart Screen (Powered by Beecepter Rest API service):
 
-- View items added to the cart.
-- Add/remove items.
-- Manage items quantity.
-- Check the total of all items.
-- Ability to checkout and place order.
-- Cart persistence even after the app is closed.
-- Checkout Popup and Order placement loader.
+This section outlines the features of the Cart Screen, leveraging the Beecepter Rest API service to provide users with seamless shopping functionality and management of their cart items.
+
+### Key Features:
+
+- **View Cart Items:** Enables users to view all items added to their cart, providing a comprehensive overview of their shopping selections.
+
+- **Add/Remove Items:** Allows users to easily add or remove items from their cart, providing flexibility and control over their shopping experience.
+
+- **Manage Item Quantity:** Offers functionality to adjust the quantity of individual items within the cart, allowing users to fine-tune their purchase quantities as needed.
+
+- **Total Calculation:** Automatically calculates and displays the total cost of all items in the cart, giving users clear insight into their shopping expenses.
+
+- **Checkout and Order Placement:** Facilitates the checkout process, allowing users to proceed with order placement seamlessly. Orders are stored at Beecepter using a customized JSON format, ensuring efficient order management.
+
+- **Cart Persistence:** Ensures cart persistence even after the app is closed, preserving users' shopping selections across sessions for a seamless experience.
+
+- **Checkout Popup and Order Placement Loader:** Enhances the checkout experience with a popup for order confirmation and a loader to indicate the processing of the order placement, providing users with clear feedback on their actions.
 
 ### Screenshots
 
-- ![Cart](screenshots/cart.png)
-- ![Order Placed](screenshots/checkout_screen.png)
-- ![Order Placing](screenshots/order_placing.png)
-- ![Order Placed](screenshots/order_placed.png)
+- <img src="screenshots/cart.png" alt="Cart" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/checkout_screen.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/order_placing.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/order_placed.png" alt="Order Placed" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Update Profile Screen
 
-- Update Full Name, Profile Image, and Password.
-- Ability to update the profile.
-- Ability to Logout from the App.
+This section outlines the features of the Update Profile Screen, providing users with the capability to manage their profile information effectively.
+
+### Key Features:
+
+- **Update Full Name, Profile Image, and Password:** Allows users to modify their full name, profile image, and password, providing flexibility and control over their profile information.
+
+- **Profile Update Functionality:** Empowers users to make changes to their profile information seamlessly, ensuring that their account details remain accurate and up-to-date.
+
+- **Logout Option:** Provides users with the ability to log out from the application, enhancing security and offering a convenient way to end their session.
 
 ### Screenshots
 
-- ![User Profile](screenshots/user_profile.png)
-- ![Profile Updated](screenshots/profile_updated.png)
+- <img src="screenshots/user profile.png" alt="User Profile" alt="User Profile" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+- <img src="screenshots/profile_updated.png" alt="Profile Updated" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## Atomic Design Pattern
 
