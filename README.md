@@ -13,7 +13,7 @@ This application is built on top of React Native using TypeScript, employing Red
 
 - Customized app icon and splash screen logo design.
 
-  - <img src="screenshots/splash.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"F/>
+  - <img src="screenshots/splash.png" alt="Login" width="220" style="margin-top: 20px; margin-bottom: 20px;"/>
 
 ## UI/UX Inspiration from Dribbble
 
